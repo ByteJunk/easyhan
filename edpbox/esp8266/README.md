@@ -1,9 +1,6 @@
 Build:
 
-https://github.com/nikito7/edpbox/tree/dev/tasmota/esp8266
+Follow the regular build process for Tasmota firmware, as described here (or elsewhere):
+https://tasmota.github.io/docs/Visual-Studio-Code/
 
-OTA:
-
-http://u.easyhan.pt/han/
-
-http://u.easyhan.pt/han/tasmota-4M.bin.gz
+Use the overrides in user_config_override.h to include the required features while stripping down everything we can to maximize available resources.
