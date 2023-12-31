@@ -13,7 +13,7 @@ smlj=0
 tper=30
 
 >S
-if ((upsecs>30) and (smlj==0))
+if ((upsecs>60) and (smlj==0))
 then
 smlj|=1
 endif
