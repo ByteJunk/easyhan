@@ -238,4 +238,9 @@ Examples :
 #define USE_MODBUS_BRIDGE_TCP
 #define USE_SML_TCP
 
+// Change some default settings
+#define MQTT_TOPIC             "EasyHAN"   // [Topic] If this is changed, it will break discovery in HomeAssistant
+#define TELE_PERIOD            30          // [TelePeriod] Telemetry (0 = disable, 10 - 3600 seconds)
+#define FRIENDLY_NAME          "EasyHAN"   // [FriendlyName] Friendlyname up to 32 characters used by webpages and Alexa
+
 #endif  // _USER_CONFIG_OVERRIDE_H_
