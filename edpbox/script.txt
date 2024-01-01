@@ -1,10 +1,9 @@
 >D 48
-EB="EB1"
 fheap=0
 fram=0
 time=0
 date=0
-
+cnt=0
 
 >B
 spinm(2 1)
@@ -12,13 +11,24 @@ smlj=0
 tper=30
 =>SerialLog 0
 =>Sensor53 r
-=>Sensor53 d0
 
 
 >S
-if ((upsecs>60) and (smlj==0))
+
+if cnt<99
+then
+cnt+=1
+print cnt=%0cnt%
+endif
+
+if ((cnt>60) and (smlj==0))
 then
 smlj|=1
+endif
+
+if cnt==30
+then
+=>UfsRun discovery.txt
 endif
 
 fheap=heap/1024
@@ -60,12 +70,12 @@ fram=ram
 ; 5.6.4 Total Registers
 1,010408x00U32@i2:1000,Total Importado,kWh,AEIpA,3
 1,010408x04U32@i2:1000,Total Exportado,kWh,AEImA,3
-;1,010418x00U32@ixxxxxxxxxxxxxxx:1000,*,kWh,AEIL1pA,3 ;eb3
-;1,010418x04U32@ixxxxxxxxxxxxxxx:1000,*,kWh,AEIL2pA,3 ;eb3
-;1,010418x08U32@ixxxxxxxxxxxxxxx:1000,*,kWh,AEIL3pA,3 ;eb3
-;1,010418x12U32@ixxxxxxxxxxxxxxx:1000,*,kWh,AEEL1mA,3 ;eb3
-;1,010418x16U32@ixxxxxxxxxxxxxxx:1000,*,kWh,AEEL2mA,3 ;eb3
-;1,010418x20U32@ixxxxxxxxxxxxxxx:1000,*,kWh,AEEL3mA,3 ;eb3
+;1,010418x00U32@i10:1000,*,kWh,AEIL1pA,3 ;eb3
+;1,010418x04U32@i10:1000,*,kWh,AEIL2pA,3 ;eb3
+;1,010418x08U32@i10:1000,*,kWh,AEIL3pA,3 ;eb3
+;1,010418x12U32@i10:1000,*,kWh,AEEL1mA,3 ;eb3
+;1,010418x16U32@i10:1000,*,kWh,AEEL2mA,3 ;eb3
+;1,010418x20U32@i10:1000,*,kWh,AEEL3mA,3 ;eb3
 1,010420x00U32@i3:1,MxDemand-Imp,W,MDAPpQ14,0
 ;1,010420x04U32@i3:1,*,Clk,MDAPpQ14T,0 ;clock
 1,010420x16U32@i3:1,MxDemand-Exp,W,MDAPmQ14,0
@@ -91,23 +101,23 @@ fram=ram
 ; 5.6.6 Instantaneous Values
 1,010404x00UUuu@i5:10,Tensão,V,IVL1,1
 1,010404x02UUuu@i5:10,Corrente,A,ICL1,1
-1,010422x00UUuu@ixxxxxxx:10,*,V,IVL2,1 ;eb3
-1,010422x02UUuu@ixxxxxxx:10,*,A,ICL2,1 ;eb3
-1,010422x04UUuu@ixxxxxxx:10,*,V,IVL3,1 ;eb3
-1,010422x06UUuu@ixxxxxxx:10,*,A,ICL3,1 ;eb3
-1,010422x08UUuu@ixxxxxxx:10,*,A,ICSUM,1 ;eb3
-1,010422x10U32@ixxxxxxx:10,*,W,IAPpL1,1 ;eb3
-1,010422x14U32@ixxxxxxx:10,*,W,IAPmL1,1 ;eb3
-1,010422x18U32@ixxxxxxx:10,*,W,IAPpL2,1 ;eb3
-1,010422x22U32@ixxxxxxx:10,*,W,IAPmL2,1 ;eb3
-1,010422x26U32@ixxxxxxx:10,*,W,IAPpL3,1 ;eb3
-1,010422x30U32@ixxxxxxx:10,*,W,IAPmL3,1 ;eb3
+;1,010422x00UUuu@ixxxxxxx:10,*,V,IVL2,1 ;eb3
+;1,010422x02UUuu@ixxxxxxx:10,*,A,ICL2,1 ;eb3
+;1,010422x04UUuu@ixxxxxxx:10,*,V,IVL3,1 ;eb3
+;1,010422x06UUuu@ixxxxxxx:10,*,A,ICL3,1 ;eb3
+;1,010422x08UUuu@ixxxxxxx:10,*,A,ICSUM,1 ;eb3
+;1,010422x10U32@ixxxxxxx:10,*,W,IAPpL1,1 ;eb3
+;1,010422x14U32@ixxxxxxx:10,*,W,IAPmL1,1 ;eb3
+;1,010422x18U32@ixxxxxxx:10,*,W,IAPpL2,1 ;eb3
+;1,010422x22U32@ixxxxxxx:10,*,W,IAPmL2,1 ;eb3
+;1,010422x26U32@ixxxxxxx:10,*,W,IAPpL3,1 ;eb3
+;1,010422x30U32@ixxxxxxx:10,*,W,IAPmL3,1 ;eb3
 1,01040Ax00U32@i6:1,Utilizado,W,IAPpSUM,0
 1,01040Ax04U32@i6:1,Produzido,W,IAPmSUM,0
 1,01040Ax08UUuu@i6:1000,Factor de Potência,,IPF,3
-1,010406x00UUuu@ixxxxxxxxx:1000,*,,IPFL1,3 ;eb3
-1,010406x02UUuu@ixxxxxxxxx:1000,*,,IPFL2,3 ;eb3
-1,010406x04UUuu@ixxxxxxxxx:1000,*,,IPFL3,3 ;eb3
+;1,010406x00UUuu@ixxxxxxxxx:1000,*,,IPFL1,3 ;eb3
+;1,010406x02UUuu@ixxxxxxxxx:1000,*,,IPFL2,3 ;eb3
+;1,010406x04UUuu@ixxxxxxxxx:1000,*,,IPFL3,3 ;eb3
 1,010402x00UUuu@i7:10,Frequência,Hz,IF,1
 1,=h<br>
 
